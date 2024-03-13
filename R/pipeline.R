@@ -122,9 +122,9 @@ sccca <- function(sobj, assay = "RNA", cluster, marker, tissue, tt = "a", cond, 
     markers_db <- markers_db[markers_db$species == "Mouse",]
   }
   if (tt == "n"){
-    markers_db <- markers_db[!grepl(x = markers_db$celltype, pattern = "Leukemia|Cancer"),]
+    markers_db <- markers_db[!grepl(x = toupper(markers_db$celltype), pattern = "LEUKEMIA|CANCER|CARCINOMA"),]
   }else if (tt == "c"){
-    markers_db <- markers_db[grepl(x = markers_db$celltype, pattern = "Leukemia|Cancer"),]
+    markers_db <- markers_db[grepl(x = toupper(markers_db$celltype), pattern = "LEUKEMIA|CANCER|CARCINOMA"),]
   }
   # Get the organism tissue
   markers_db_tissue <- markers_db[grepl(tissue, markers_db$organ),]
